@@ -1,0 +1,8 @@
+.color-selector.selected {
+    border: 2px solid #000 !important;
+    transform: scale(1.05);
+}
+.size-selector.selected, .size-selector.active {
+    font-weight: 600;
+    text-decoration: underline;
+}

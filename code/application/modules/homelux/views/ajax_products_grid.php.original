@@ -1,0 +1,154 @@
+<?php
+// AJAX endpoint for product grid only (no header/footer)
+if (!empty($products)) : ?>
+    <div class="auto-clear equal-container better-height akasha-products">
+        <ul class="row products columns-3">
+            <?php foreach ($products as $product): ?>
+                <li class="product-item wow fadeInUp product-item rows-space-30 col-bg-4 col-xl-3 col-lg-6 col-md-6 col-sm-6 col-ts-6 style-01"
+                    data-wow-duration="1s" data-wow-delay="0ms" data-wow="fadeInUp">
+                    <div class="product-inner tooltip-right">
+                        <div class="product-thumb">
+                            <!-- Product Image Carousel -->
+                            <div id="carousel-<?php echo $product['id']; ?>" class="carousel slide" data-ride="carousel"
+                                data-interval="2500" data-pause="hover" data-direction="right">
+                                <div class="carousel-inner">
+                                    <?php
+                                    $images = [];
+                                    if (!empty($product['attributes'])) {
+                                        foreach ($product['attributes'] as $idx => $attr) {
+                                            if (!empty($attr['image'])) {
+                                                $images[] = [
+                                                    'src' => site_url() . 'images/products/' . $attr['image'],
+                                                    'variant_id' => $attr['id']
+                                                ];
+                                            }
+                                        }
+                                    }
+                                    foreach ($images as $idx => $img): ?>
+                                        <div class="carousel-item <?php echo ($idx === 0) ? 'active' : ''; ?>" data-variant-id="<?php echo $img['variant_id']; ?>" data-product-id="<?php echo $product['id']; ?>" >
+                                            <img src="<?php echo $img['src']; ?>"
+                                                data-variant-id="<?php echo $img['variant_id']; ?>"
+                                                data-product-id="<?php echo $product['id']; ?>"
+                                                onclick="window.location.href='<?php echo site_url(); ?>products/product_view/<?php echo $product['id']; ?>';"
+                                            >
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <a class="carousel-control-prev" href="#carousel-<?php echo $product['id']; ?>" data-slide="prev">
+                                    <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#carousel-<?php echo $product['id']; ?>" data-slide="next">
+                                    <span class="carousel-control-next-icon"></span>
+                                </a>
+                            </div>
+                            <div class="flash">
+                                <?php if ($product['available'] == 'In Stock'): ?>
+                                    <span class="onnew"><span class="text">New</span></span>
+                                <?php endif; ?>
+                            </div>
+                            <div class="group-button">
+                                <div class="yith-wcwl-add-to-wishlist">
+                                    <div class="yith-wcwl-add-button show">
+                                        <a href="#" class="add_to_wishlist" data-product-id="<?php echo $product['id']; ?>">Add to Wishlist</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-info equal-elem">
+                            <!-- Dynamic Color Circles -->
+                            <div class="color-option pb-2">
+                                <div class="circles">
+                                    <?php if (!empty($product['attributes'])): ?>
+                                        <?php foreach ($product['attributes'] as $attr): ?>
+                                            <?php if (!empty($attr['color_name'])): ?>
+                                                <span class="circle color-selector"
+                                                    title="<?php echo $attr['color_name']; ?>"
+                                                    style="cursor:pointer; background:<?php echo strtolower($attr['color_name']); ?>;"
+                                                    data-variant-id="<?php echo $attr['id']; ?>"
+                                                    data-product-id="<?php echo $product['id']; ?>"
+                                                    data-color="<?php echo htmlspecialchars($attr['color_name']); ?>">
+                                                </span>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <h3 class="product-name product_title">
+                                <a href="<?php echo site_url(); ?>products/product_view/<?php echo $product['id']; ?>">
+                                    <?php echo htmlspecialchars($product['title']); ?>
+                                </a>
+                            </h3>
+                            <!-- Dynamic Sizes -->
+                            <div class="rating-wapper nostar">
+                                <?php 
+                                $size_order = ['XS','S','M','L','XL','XXL','3XL','4XL','5XL'];
+                                $size_attrs = [];
+                                if (!empty($product['attributes'])) {
+                                    foreach ($product['attributes'] as $attr) {
+                                        if (!empty($attr['size_name'])) {
+                                            $size_attrs[] = $attr;
+                                        }
+                                    }
+                                    // Sort $size_attrs by $size_order
+                                    usort($size_attrs, function($a, $b) use ($size_order) {
+                                        $a_idx = array_search(strtoupper($a['size_name']), $size_order);
+                                        $b_idx = array_search(strtoupper($b['size_name']), $size_order);
+                                        if ($a_idx === false) $a_idx = 999;
+                                        if ($b_idx === false) $b_idx = 999;
+                                        return $a_idx - $b_idx;
+                                    });
+                                    foreach ($size_attrs as $attr): ?>
+                                        <span class="size-selector"
+                                            style="cursor:pointer;"
+                                            data-variant-id="<?php echo $attr['id']; ?>"
+                                            data-product-id="<?php echo $product['id']; ?>"
+                                            data-size="<?php echo htmlspecialchars($attr['size_name']); ?>">
+                                            <?php echo $attr['size_name']; ?>
+                                        </span>
+                                    <?php endforeach;
+                                }
+                                ?>
+                            </div>
+                            <!-- Dynamic Prices -->
+                            <span class="price">
+                                <span class="akasha-Price-amount amount" id="product-price-<?php echo $product['id']; ?>">
+                                    INR
+                                    <?php
+                                    // Find the first attribute with image, price, size, color
+                                    $default_idx = null;
+                                    if (!empty($product['attributes'])) {
+                                        foreach ($product['attributes'] as $idx => $attr) {
+                                            if (!empty($attr['image']) && !empty($attr['price_name']) && !empty($attr['size_name']) && !empty($attr['color_name'])) {
+                                                $default_idx = $idx;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                    <?php if (!empty($product['attributes'])): ?>
+                                        <?php foreach ($product['attributes'] as $idx => $attr): ?>
+                                            <?php if (!empty($attr['price_name'])): ?>
+                                                <span class="akasha-Price-currencySymbol price-value <?php echo strtolower($attr['color_name']); ?>"
+                                                    data-variant-id="<?php echo $attr['id']; ?>"
+                                                    data-product-id="<?php echo $product['id']; ?>"
+                                                    style="padding-left: 10px; display:<?php echo ($idx === 0) ? 'inline' : 'none'; ?>;">
+                                                    ₹ <?php echo $attr['price_name']; ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <script>
+                    window.productVariantsGroupedByColor = window.productVariantsGroupedByColor || {};
+                    window.productVariantsGroupedByColor[<?php echo $product['id']; ?>] = <?php echo json_encode($product['variants_grouped_by_color'] ?? []); ?>;
+                    </script>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php else: ?>
+    <div class="alert alert-warning">No products found.</div>
+<?php endif; ?>

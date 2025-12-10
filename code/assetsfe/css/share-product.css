@@ -1,0 +1,237 @@
+/**
+ * Share Product Functionality Styles
+ */
+
+/* Share Button Container */
+.share-button {
+    position: relative;
+    display: inline-block;
+}
+
+.share-button a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background-color: #890000;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.share-button a:hover {
+    background-color: #650000;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transform: scale(1.08);
+}
+
+.share-button a i {
+    font-size: 20px;
+    line-height: 20px;
+    display: inline-block;
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Share Icons Container */
+.akasha-share-socials {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    padding: 0;
+}
+
+.social-heading {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #333;
+    margin-right: 10px;
+    white-space: nowrap;
+}
+
+/* Share Icons - More specific to override style.css */
+.entry-summary .akasha-share-socials .share-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background-color: #e8e8e8 !important;
+    color: #555 !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    flex-shrink: 0 !important;
+    padding: 0 !important;
+    margin-right: 10px !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Platform-specific colors - Default state */
+.entry-summary .akasha-share-socials .share-icon.facebook-share {
+    /*background-color: #1877F2 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.facebook-share:hover {
+    /*background-color: #155db3 !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.twitter-share {
+    /*background-color: #1DA1F2 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.twitter-share:hover {
+    /*background-color: #1a8cd8 !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.linkedin-share {
+    /*background-color: #0A66C2 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.linkedin-share:hover {
+    /*background-color: #084a99 !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.whatsapp-share {
+    /*background-color: #25D366 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.whatsapp-share:hover {
+    /*background-color: #1eaa54 !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.pinterest-share {
+    /*background-color: #E60023 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.pinterest-share:hover {
+    /*background-color: #b3001a !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.email-share {
+    /*background-color: #EA4335 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.email-share:hover {
+    /*background-color: #c5221f !important;*/
+    background-color: #000 !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.copy-link {
+    /*background-color: #666 !important;*/
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.entry-summary .akasha-share-socials .share-icon.copy-link:hover {
+    /*background-color: #444 !important;*/
+    background-color: #000 !important;
+}
+
+/* Share icon inner styling */
+.entry-summary .akasha-share-socials .share-icon i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 18px !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1 !important;
+}
+
+/* Share Button (main button) */
+.share-btn {
+    display: inline-block;
+    padding: 10px 20px !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 1px solid #000 !important;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.share-btn:hover {
+    background-color: #000 !important;
+    border-color: #000 !important;
+}
+
+.share-btn i {
+    margin-right: 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .akasha-share-socials {
+        gap: 8px;
+    }
+    
+    .social-heading {
+        font-size: 12px;
+        margin-right: 8px;
+    }
+    
+    .share-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+    
+    .share-button a {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .share-button a i {
+        font-size: 16px;
+    }
+}
+
+/* Tooltip styling */
+[data-toggle="tooltip"] {
+    cursor: help;
+}
+
+.tooltip {
+    font-size: 12px;
+}
+
+.tooltip.show {
+    opacity: 1;
+}

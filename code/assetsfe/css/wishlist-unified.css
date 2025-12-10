@@ -1,0 +1,351 @@
+/**
+ * Unified Wishlist Styles
+ * Applied globally across header, footer, and product cards
+ * Ensures consistent icon styling and counter appearance
+ */
+
+/* ============================================
+   WISHLIST COUNTER (Header & Footer)
+   ============================================ */
+.wishlist-counter {
+    position: absolute;
+    top: 7px;
+    right: -8px;
+    background: #000;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    z-index: 10;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* ============================================
+   WISHLIST COUNTER BADGE (Footer Mobile)
+   ============================================ */
+.count-icon.wishlist-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #000;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    z-index: 10;
+}
+
+/* ============================================
+   WISHLIST BUTTON (Product Cards)
+   ============================================ */
+.wishlist-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #fff !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.wishlist-btn:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    color: #fff !important;
+    text-decoration: none;
+    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-btn:focus {
+    outline: 2px solid #890000;
+    outline-offset: 2px;
+}
+
+.wishlist-btn.wishlist-added {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #ddd !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.wishlist-btn.wishlist-added:hover {
+    background: #f8f8f8 !important;
+    color: #000 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.wishlist-btn.wishlist-added:focus {
+    outline: 2px solid #890000;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   WISHLIST HEART ICON (Flaticon Icons)
+   ============================================ */
+.wishlist-icon-state {
+    font-size: 16px;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    color: #fff !important;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+/* Unselected state - outline heart (flaticon-heart) */
+.wishlist-btn .wishlist-icon-state {
+    color: #fff !important;
+}
+
+/* Selected state - filled heart (flaticon-valentines-heart) */
+.wishlist-btn.wishlist-added .wishlist-icon-state {
+    color: #000 !important;
+}
+
+/* Backwards compatibility - keep old class styles */
+.wishlist-heart-icon {
+    font-size: 16px;
+    font-weight: normal;
+    transition: all 0.3s ease;
+    color: #fff !important;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.wishlist-btn.wishlist-added .wishlist-heart-icon {
+    color: #000 !important;
+}
+
+/* ============================================
+   YITH WISHLIST PLUGIN OVERRIDES
+   ============================================ */
+
+/* Reset YITH plugin default sizes */
+.yith-wcwl-add-to-wishlist {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+}
+
+.yith-wcwl-add-to-wishlist a {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+}
+
+/* Override default YITH Font Awesome icons */
+.add_to_wishlist::before,
+.yith-wcwl-add-to-wishlist .add_to_wishlist::before {
+    content: none !important;
+    display: none !important;
+}
+
+.yith-wcwl-wishlistaddedbrowse a::before,
+.yith-wcwl-wishlistexistsbrowse a::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Additional overrides for all wishlist pseudo-elements */
+.yith-wcwl-add-to-wishlist a::before,
+.product-item .group-button .yith-wcwl-add-to-wishlist a::before,
+.wishlist-btn::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Override any remaining plugin styles */
+.yith-wcwl-add-to-wishlist .yith-wcwl-add-button a,
+.yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a,
+.yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 0 !important;
+}
+
+/* ============================================
+   PRODUCT CARD GROUP BUTTON POSITIONING
+   ============================================ */
+.product-item .group-button .yith-wcwl-add-to-wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+/* ============================================
+   BLOCK LINK STYLING (Header)
+   ============================================ */
+.block-link {
+    position: relative;
+}
+
+/* ============================================
+   FONTAWESOME ICON SUPPORT
+   ============================================ */
+.wishlist-btn .fa-heart,
+.wishlist-btn .fa-heart-o {
+    font-size: 16px;
+    color: inherit;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+.wishlist-btn[role="button"] {
+    cursor: pointer;
+}
+
+/* Keyboard focus for better accessibility */
+.wishlist-btn:focus-visible {
+    outline: 2px solid #890000;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   RESPONSIVE / MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+    .wishlist-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    .wishlist-heart-icon {
+        font-size: 16px;
+    }
+
+    .wishlist-counter {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
+        top: 5px;
+        right: -5px;
+    }
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.wishlist-btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.wishlist-btn.loading::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+.wishlist-btn.wishlist-added.loading::after {
+    border-color: rgba(0, 0, 0, 0.3);
+    border-top-color: #000;
+}
+
+/* ============================================
+   PRODUCT PAGE WISHLIST BUTTON (View Product)
+   ============================================ */
+.akasha-product-gallery {
+    position: relative;
+}
+
+/* NOT WISHLISTED STATE - Black background, white heart */
+.akasha-product-gallery__trigger.add_to_wishlist {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: #000 !important;
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 100 !important;
+    cursor: pointer !important;
+    border: 2px solid #000 !important;
+    transition: all 0.3s ease !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    color: #fff !important;
+}
+
+.akasha-product-gallery__trigger.add_to_wishlist:hover {
+    background-color: #333 !important;
+}
+
+/* WISHLISTED STATE - White background, black heart */
+.akasha-product-gallery__trigger.remove_from_wishlist {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    width: 40px !important;
+    height: 40px !important;
+    background-color: #fff !important;
+    padding: 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 100 !important;
+    cursor: pointer !important;
+    border: 2px solid #000 !important;
+    transition: all 0.3s ease !important;
+    font-size: 20px !important;
+    line-height: 1 !important;
+    color: #000 !important;
+}
+
+.akasha-product-gallery__trigger.remove_from_wishlist:hover {
+    background-color: #f8f8f8 !important;
+}
+
+/* Prevent pseudo-elements from showing on view-product buttons */
+.akasha-product-gallery__trigger.add_to_wishlist::before,
+.akasha-product-gallery__trigger.add_to_wishlist::after,
+.akasha-product-gallery__trigger.remove_from_wishlist::before,
+.akasha-product-gallery__trigger.remove_from_wishlist::after {
+    content: none !important;
+    display: none !important;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

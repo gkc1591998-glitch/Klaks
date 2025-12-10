@@ -1,0 +1,27 @@
+# Database dumps
+database/*.sql
+*.sql
+
+# Terraform secrets and state
+terraform/*.tfvars
+terraform/*.pem
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
+
+# Application configuration with credentials
+code/application/config/database.php
+
+# Logs and temp files
+*.log
+code/application/logs/*
+!code/application/logs/index.html
+code/application/cache/*
+!code/application/cache/index.html
+code/application/sessions/*
+!code/application/sessions/index.html
+
+# OS generated
+Thumbs.db
+.DS_Store
